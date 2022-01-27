@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package user;
+
+// Declare a service for each controller you have
+service UserService {
+
+  // Declare an rpc for each method that is called via gRPC  
+  rpc FindOne (UserById) returns (User);
+  rpc FindMany (stream UserById) returns (stream User);
+}
+
+// Declare the types used above
+message UserById {
+  int32 id = 1;
+}
+
+message User {
+  int32 id = 1;
+  string name = 2;
+}
